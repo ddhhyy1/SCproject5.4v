@@ -9,7 +9,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/title.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/content.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/login.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/board.css">
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/board.js"></script>
 
 <title>내 질문</title>
@@ -25,7 +25,7 @@
 		</tr>
 		<tr>
 			<td colspan="2" align="center" class="content_text01"><font size="6">
-				질문게시판
+				내 질문
 			</font></td>
 		</tr>
 		<tr>
@@ -37,25 +37,43 @@
 			<td>
 				<center>
 				<table width="80%" border="0" cellspacing="0" cellpadding="10">
+					
 					<tr class="contentbox">
 						<td class="content">
-							<center>						
+								<center>					
 							<table border="0" cellspacing="0" cellpadding="10">
+								
 								<form action="questionModify" method="post" name="board_frm">
 									<input type="hidden" value="${qdto.bnum }" name="bnum">
+									
+									<table border="0" cellspacing="0" cellpadding="10">
+										
+									<tr>
+										
+										<td>
+										  <div class="input-box">
+                							<input class="input_type01" type="text" name="btitle" value="${qdto.btitle }" readonly="readonly">
+                								<label for="btitle">제목</label>
+            								</div>
+										</td>
+									</tr>
+										
+									<tr>
+										 
+										<td>
+										
+										<textarea class="textarea_a1" rows="10" cols="50" name="bcontent" readonly="readonly">${qdto.bcontent }</textarea>
+										
+											
+										</td>
+									</tr>	
+										
+									</table>	
+									<table border="0" cellspacing="0" cellpadding="10">												
 									<tr>
 										<td><span class="content_text01">아 이 디 : </span></td>
 										<td><input class="input_type01" type="text" name="buserid" value="${qdto.buserid }" readonly="readonly"></td>
 									</tr>
-									<tr>
-										<td><span class="content_text01">제목 : </span></td>
-										<td><input class="input_type01" type="text" name="btitle" value="${qdto.btitle }" readonly="readonly"></td>
-									</tr>
-									<tr>
-										<td><span class="content_text01">질문내용 : </span></td>
-										<td><textarea class="textarea_type01" rows="5" cols="30" name="bcontent" readonly="readonly">${qdto.bcontent}</textarea></td>
-									</tr>									
-									
 									<tr>
 										<td><span class="content_text01">등 록 일 : </span></td>
 										<td><input class="input_type01" type="text" name="bdate" value="${qdto.bdate }" readonly="readonly"></td>
@@ -79,54 +97,81 @@
 										%>
 										</td>
 									</tr>
+									</table>
 								</form>
+								
 								</table>
 								</center>
-								
+			
+			<tr>
+									<td colspan="2" align="center" class="content_text01">
+										&nbsp;
+									</td>
+									</tr>					
 	<center>	
 		
        
         
-		<table border="1" cellpadding="0" cellspacing="0" width="750">
+		<table class= "reply" border="0" cellpadding="0" cellspacing="0" width="750">
         	<c:forEach items="${replylist }" var="replyDtoa">
+        	
         	<tr>
-        		
-        		<td width=550>
-        			${replyDtoa.rcontent }<br><br>
-        			
+        		<td class = "reply2" width="100">
+					 			
         		</td>
-        		<td>
+        		<td class = "reply2" width=550>
+        			<font size ="6">${replyDtoa.rid } </font>&nbsp; &nbsp; &nbsp;
+        			${replyDtoa.rdate } <br><br>
+        			<font size ="4">${replyDtoa.rcontent }</font>
+        		</td>
+        		<td class = "reply2">
         			<a href="replyDelete?rnum=${replyDtoa.rnum }&bnum=${qdto.bnum }">삭제</a>
         		</td>
-        		
+        		<tr>
+									<td colspan="2" align="center" class="content_text01">
+										&nbsp;
+									</td>
+									</tr>	
         	</tr>
         	</c:forEach>
         	</table>
-        	
+        	<tr>
+			<td colspan="2" align="center" class="content_text01">
+				&nbsp;
+			</td>
+			</tr>
+			<tr>
+			<td colspan="2" align="center" class="content_text01">
+				&nbsp;
+			</td>
+		</tr>
         
         <table>
         	<form action="replyOk" method="post">
         <input type="hidden" name="bnum" value="${qdto.bnum }">
 									<tr>
-										<td><span class="content_text01">댓글 : </span></td>
-										<td><textarea class="textarea_type01" rows="10" cols="30" name="rcontent"></textarea></td>
+										<td><span class="content_text01">댓 글 :  </span></td>
+										<td><input class="input_type01" type="text" name="rcontent"></td>
 									</tr>	
+									
 									<tr>
 										<td colspan="2">
-											
+											<center>
 											<button type="submit" class="btn btn-primary btn-lg">댓글등록</button>
+											</center>
 										</td>
 									</tr>
 						
 									</table>
 									</form>
-			</center>
+		
 			
 			
 			</td>
 								</tr>
-								</table>
 								</center>
+								</table>
+							
 								</td>
 								</tr>
 								</table>

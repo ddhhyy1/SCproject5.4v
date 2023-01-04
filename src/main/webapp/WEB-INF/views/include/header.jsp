@@ -30,22 +30,7 @@
         		} 
         	%>
         	</td>
-        	
-        	<td class="menu01">
-			<%
-				if(sessionId == null) {
-			%>
-				
-			<%
-				} else {	
-			%>
-				<td width="10%" class="menu01"><a href="list">문의Q&A</a></td>
-			<% 
-				} 
-			%>	
-			</td>
-        	
-			<td width="7%" class="menu01">
+			<td width="5%" class="menu01">
 			<% 
 				if(sessionId == null) { 
 			%>
@@ -53,12 +38,12 @@
         	<% 
         		} else { 
         	%>
-        		<a href="logout" width="8%">로그아웃</a>
+        		<a href="logout">로그아웃</a>
         	<% 
         		} 
         	%>
         	</td>
-			<td width="7%" class="menu01">
+			<td width="5%" class="menu01">
 			<%
 				if(sessionId == null) {
 			%>
@@ -66,7 +51,7 @@
 			<%
 				} else {	
 			%>
-				<a href="memberInfo" width="5%">내 정보</a>
+				<a href="memberInfo">내 정보</a>
 			<% 
 				} 
 			%>	
@@ -79,16 +64,16 @@
 			<%
 				} else {	
 			%>
-				<td width="8%" class="menu01"><a href="checkReservInfo">예약정보</a>	</td>
+				<td width="5%" class="menu01"><a href="checkReservInfo">예약정보</a>	</td>
 			<% 
 				} 
 			%>	
 		
 			
 			
-			<td width="8%" class="menu01"><a href="TicketPrice">이용금액</a></td>
-			<td width="8%" class="menu01"><a href="ChooseTicket">이용권구매</a></td>
-			
+			<td width="5%" class="menu01"><a href="TicketPrice">이용금액</a></td>
+			<td width="7%" class="menu01"><a href="ChooseTicket">이용권구매</a></td>
+			<td width="5%" class="menu01"><a href="list">문의Q&A</a></td>
 			
 			<td width="2%">&nbsp;</td>
 		</tr>

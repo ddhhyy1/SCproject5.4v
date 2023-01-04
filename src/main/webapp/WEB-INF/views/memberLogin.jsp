@@ -36,9 +36,9 @@
 							<form action="loginOk">						
 							<table border="0" cellspacing="0" cellpadding="10">
 									<tr>
-										<td colspan="2" align="center" class="content_text01">
+										<td colspan="2" align="center" class="content_text01"><font size="6">
 										회원 로그인
-										</td>
+										</font></td>
 									</tr>
 									<tr>
 										<td colspan="2" align="center" class="content_text01">
