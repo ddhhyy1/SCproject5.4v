@@ -9,6 +9,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,29 +40,42 @@ public class BoardController {
 			
 		String sessionId = (String) session.getAttribute("userId");
 		
-		if(sessionId == null) {//로그인 상태 확인
-			model.addAttribute("userId", "GUEST");
-		} else {
-			model.addAttribute("userId", sessionId);
-		}
-		
 		return "question";
 	}
 	
 	@RequestMapping(value = "/questionOk")
-	public String questionOk(HttpServletRequest request) {
+	public String questionOk(HttpServletResponse response, HttpServletRequest request, HttpSession session, Model model ) {
 		
 		String btitle = request.getParameter("btitle");//질문 제목
 		String bcontent = request.getParameter("bcontent");//질문 내용
 		String buserid = request.getParameter("buserid");//글쓴유저 아이디
 		
+		String sessionId = (String) session.getAttribute("userId");
+		
+		if(sessionId == null) {//참이면 로그인이 안된 상태
+			PrintWriter out;
+			try {
+				response.setContentType("text/html;charset=utf-8");
+				out = response.getWriter();
+				out.println("<script>alert('로그인하지 않으면 질문할 수 없습니다!');history.go(-1);</script>");
+				out.flush();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		} else {
+		
 		BoardDao dao = sqlSession.getMapper(BoardDao.class);
 		
 		dao.writeQuestion(btitle, bcontent, buserid);
 		
+		}
 		return "redirect:list";
 	}
-	
+
+
+
 	@RequestMapping(value = "list")
 	public String list(Model model, Criteria cri, HttpServletRequest request) {
 		
@@ -101,7 +115,6 @@ public class BoardController {
 		BoardDao dao = sqlSession.getMapper(BoardDao.class);
 		
 		BoardDto rfboardDto = dao.rfboardView(bnum);
-		System.out.println(rfboardDto.getBuserid());
 		ArrayList<replyDto> replyDtos = dao.rlist(bnum);
 		
 		model.addAttribute("qdto", rfboardDto);
@@ -212,4 +225,3 @@ public class BoardController {
 		return "questionView";
 	}
 }
-

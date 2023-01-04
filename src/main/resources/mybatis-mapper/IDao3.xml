@@ -47,7 +47,7 @@
 	
 	<insert id="rwrite">
 		INSERT INTO screplytbl(rnum, rorinum, rid, rcontent) 
-		VALUES (screply_seq.nextval, #{param1}, #{param2}, #{param3 ,jdbcType=VARCHAR })
+		VALUES (screply_seq.nextval, #{param1}, #{param2}, #{param3})
 	</insert>
 	
 	<select id="rlist" resultType="com.studycafe.prac.dto.replyDto">

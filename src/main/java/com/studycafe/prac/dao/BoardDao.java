@@ -21,6 +21,7 @@ public interface BoardDao {
 	public int boardAllCount();//게시판 총 글의 개수 가져오기
 	
 	//게시판 댓글 관련
+	//댓글관련
 	public void rwrite(String rorinum, String rid, String rcontent);//새 댓글 입력 insert
 	public ArrayList<replyDto> rlist(String rorinum);//해당글의 댓글 리스트 select
 	public void brcount(String rorinum);//댓글 등록시 해당글의 댓글갯수 1증가 
