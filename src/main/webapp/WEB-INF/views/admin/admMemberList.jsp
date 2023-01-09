@@ -70,16 +70,16 @@
 							</thead>
 							<tbody class="seatTblBody">
 								<c:forEach items="${memberDto}" var="Dto">									
-									<tr>
-									<td class="skillbox" >
+									<tr class="seatTblTr">
+									<td class="seatTblTd">
 									<a href="admUserInfo?userId=${Dto.userId}">
 									${Dto.userId}</a></td>
-									<td class="skillbox" >${Dto.userName}</td>
-									<td class="skillbox" >${Dto.userPhone}</td>
-									<td class="skillbox" >${Dto.userEmail}</td>
-									<td class="skillbox">
+									<td class="seatTblTd" >${Dto.userName}</td>
+									<td class="seatTblTd" >${Dto.userPhone}</td>
+									<td class="seatTblTd">${Dto.userEmail}</td>
+									<td class="seatTblTd">
 									${Dto.userPoint}</td>
-									<td class="skillbox" >${Dto.usingTicket}</td>
+									<td class="seatTblTd" >${Dto.usingTicket}</td>
 									
 									</tr>
 								</c:forEach>
@@ -116,7 +116,7 @@
 							</tr><br><br><br><br>
 							<tr>
 										<td colspan="3">
-											<input class="button_type01" type="submit" value="저장">
+			
 											<input class="button_type01" type="button" value="뒤로" onclick="window.history.back() ">
 										</td>
 									</tr>

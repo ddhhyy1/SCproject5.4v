@@ -13,6 +13,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/ticketPayTimeCheck.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/ticketPayTimeCheck2.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/title.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/seatTable.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/content.css">
@@ -39,14 +40,15 @@
  String seatNo=request.getParameter("seatNo");
 %>
 	<center>
-	<form action="registToday" name="timeCheckOk">
+	<form action="changeConfirm" name="timeCheckOk">
 	<table width="50%" border="0" cellspacing="0" cellpadding="20">
 		<input type="hidden" name = "userId" value="<%= sessionId %>">
 		<input type="hidden" name = "selectedDate" value="<%=selectedDate%>">
 		<input type="hidden" name = "seatNo" value="<%=seatNo%>">
+		<input type="hidden" name = "tempNo" value="${tempNo}">
 		<tr>
 			<td class="titlebox">
-				<h1>당일권_사용등록&예약하기</h1>
+				<h1>예약 시간 변경</h1>
 			</td>
 		</tr>
 		<tr>
@@ -57,20 +59,35 @@
 		</tr>
 		<tr>
 			<td class="titlebox">
-				<span class="title02">이용날짜:
+				<span class="title02">변경된 날짜:
 				${selectedDate}
 				</span>
 			</td>
 		</tr>
 		<tr>
 			<td class="titlebox">
-				<span class="title02">좌석지정:
+				<span class="title02">변경된 좌석:
   					${seatNo}
 				</span>
 			</td>
-		
 		</tr>
 		<tr>
+			<td class="titlebox">
+				<span class="title02">기존 이용시간:
+  				${sTime}:00 ~ ${eTime}:00 &nbsp; -- &nbsp;${tHour}시간   	
+				</span>
+			</td>
+		</tr>
+
+					  <c:choose>
+						<c:when test="${mDto.usingTicket >= 50}">
+							<tr>
+							<td>
+							</td>
+							</tr>
+						</c:when>
+						<c:otherwise>
+						<tr>
 							<td class="titlebox">
 								<span class="title02" name="ticketName2">이용시간:
   									<select name="ticketName" >
@@ -84,6 +101,9 @@
 								</span>
 							</td>
 							</tr>
+							</c:otherwise>
+					  </c:choose>
+							
 							<tr class="seatTblTr">
 								<td>
 								<center>
@@ -119,10 +139,23 @@
 											</c:forEach>
 										</tbody>
 									</table>
+									
+									
 									<tr>
 										<td colspan="3">
-											<input class="button_type01" type="button" value="다음단계로" onclick="timeCheckOk3()">
-											<input class="button_type01" type="button" value="뒤로" onclick="window.history.back() ">
+					<c:choose>
+						<c:when test="${mDto.usingTicket >= 50}">
+								
+									<input class="button_type01" type="button" value="s다음단계로" onclick="timeCheckOk2()">
+							
+						</c:when>
+							<c:otherwise>
+								<input class="button_type01" type="button" value="t다음단계로" onclick="timeCheckOk3()">
+							</c:otherwise>
+					</c:choose>
+				
+					<input class="button_type01" type="button" value="뒤로" onclick="window.history.back() ">
+				
 										</td>
 									</tr>
 				</div>

@@ -89,19 +89,34 @@
 	<!-- 내 예약정보확인 관련 -->
 	
 	<select id="getReservInfo" resultType="com.studycafe.prac.dto.seatDto">
-		SELECT * FROM SCSEATTBL WHERE userId = #{param1}
+		SELECT * FROM SCSEATTBL WHERE tempUsingNo = #{param1}
 	</select>
 	
-	<delete id="cancelReservSeatTbl">
+	<select id="getAllReservInfo" resultType="com.studycafe.prac.dto.seatDto">
+		SELECT * FROM SCSEATTBL WHERE userId = #{param1}
+	</select>
+		
+			<!-- 예약취소 관련 -->
+	<delete id="cancelReservSeatTbl"> 
 		DELETE FROM SCSEATTBL WHERE TEMPUSINGNO = #{param1}
 	</delete>
 	
 	<delete id="cancelReservResvTbl">
-		DELETE FROM SCRESERVTBL WHERE userId = #{param1} and seatNo = #{param2} and selectedDate=#{param3}
+		DELETE FROM SCRESERVTBL WHERE userId = #{param1} and seatNo = #{param2} and selectedDate = #{param3}
 	</delete>
 	
 	<update id="returnUserPointTicket">
-		UPDATE SCMEMBERTBL SET USERPOINT =#{param2}, USINGTICKET =#{param3} WHERE USERID=#{param1}
+		UPDATE SCMEMBERTBL SET USERPOINT = #{param2}, USINGTICKET = #{param3} WHERE USERID = #{param1}
 	</update>
+	
+	<update id="returnRemainTime">
+		UPDATE SUBSCRIPTIONTBL SET SREMAINTIME = #{param2} WHERE SUSERID = #{param1} 
+	</update>
+	
+			<!-- 예약정보 변경관련 -->
+	<delete id="changeReservSalesTbl"> 
+		UPDATE SCSALESTBL SET PRICE = #{param2} WHERE SALESNO = #{param1} 
+	</delete>
+	
 	
 </mapper>

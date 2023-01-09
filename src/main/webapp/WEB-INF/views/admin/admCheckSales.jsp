@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/title.css">
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/Chart.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/utils.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.0.min.js" ></script>
 <meta charset="UTF-8">
  <title>챠트</title>
     <style>
@@ -16,7 +17,11 @@
         -ms-user-select: none;
     }
     </style>
- 
+ <script type="text/javascript">
+ var date = new Date();
+
+ var aMonthago = date.getMonth() + 1;
+</script>
 
 </head>
 <body>
@@ -42,9 +47,11 @@
     var beforeweek= new Date(year, month, day - 7).toLocaleDateString();
     </script>
     <script>
+   	
+    	
         var color = Chart.helpers.color;
         var ChartData = {            
-            labels: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'], // 챠트의 항목명 설정
+            labels: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', aMonthago], // 챠트의 항목명 설정
             datasets: [{
                 label: '2022년 총 매출',  // 데이터셑의 이름
                 pointRadius: 15, // 꼭지점의 원크기
@@ -86,7 +93,7 @@
                     maintainAspectRatio: false    ,
                     title: {
                         display: true,
-                        text: '2022년 영업현황'
+                        text: '1년간 영업현황'
                     }
                 }
             });

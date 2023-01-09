@@ -78,18 +78,23 @@
     <!--      달력 추가 js 끝       -->
 
 </script>
+
+    
 <meta charset="UTF-8">
-<title>시간권 좌석지정</title>
+<title>날짜&좌석 변경</title>
 
 </head>
 <body>
 <%@ include file="../include/header.jsp" %>
 	<center>
-	<form action="searchsTicketSeat" name="searchSeatForm">
-	<table width="65%" border="0" cellspacing="0" cellpadding="20">
+	<form action="changeTime" name="searchSeatForm">
+	<table width="70%" border="0" cellspacing="0" cellpadding="20">
+		<tr>
+		<td>
+		<table width="1000" border="0" cellspacing="0" cellpadding="20">
 		<tr>
 			<td class="titlebox">
-				<h1>시간권 좌석지정</h1>
+				<h2>날짜&좌석 변경</h2>
 			</td>
 		</tr>
 		<tr>
@@ -99,62 +104,87 @@
 			</td>
 		</tr>
 		<tr>
+			<td class="titlebox" width="350">
+				<span class="title02">기존 예약 날짜:
+				${year}년 ${month}월 ${day}일
+				</span>
+			</td>
+			<td><img src="${pageContext.request.contextPath} /resources/img/arrow.png" >
+				
+			</td>
 			<td class="titlebox">
-				<span class="title02">날짜지정:
+				<span class="title02">변경 예약 날짜:
 				<input type="text" id="pickDate" name="selectedDate">
 				</span>
 			</td>
 		</tr>
 		<tr>
+			<td class="titlebox" width="300">
+				<span class="title02">기존 지정 좌석:
+  					${sDto.seatNo }번
+				</span>
+			</td>
+			<td><img src="${pageContext.request.contextPath} /resources/img/arrow.png" >	
+			</td>
 			<td class="titlebox">
-				<span class="title02">좌석지정:
-  					<input type="text" name="seatNo">
+				<span class="title02">변경 예약 좌석:
+					<input type="text" name="seatNo">번
 				</span>
 			</td>
 		</tr>
+		</tr>
+		
+		</table>
 		<tr>
 			<td>
-				<img src="${pageContext.request.contextPath} /resources/img/CafeMap2.png" usemap="#cafeMap">
-				<map name="cafeMap"  id="cafeMap">
-				<div class="change1"><area shape="rect" coords="834,27,881,81" href=#></div>
-				<div class="change2"><area shape="rect" coords="776,27,821,81" href=#></div>
-				<div class="change3"><area shape="rect" coords="717,27,764,81" href=#></div>
-				<div class="change4"><area shape="rect" coords="658,27,705,81" href=#></div>
-				<div class="change5"><area shape="rect" coords="600,27,645,81" href=#></div>
-				<div class="change6"><area shape="rect" coords="541,27,586,81" href=#></div>
-				<div class="change7"><area shape="rect" coords="480,27,529,81" href=#></div>
-				<div class="change8"><area shape="rect" coords="420,27,471,81" href=#></div>
-				<div class="change9"><area shape="rect" coords="360,27,411,81" href=#></div>
-				<div class="change10"><area shape="rect" coords="306,27,353,81" href=#></div>
+				<table width="70%" border="0" cellspacing="0" cellpadding="20">
+				<tr>
+					<td>
+					<img src="${pageContext.request.contextPath} /resources/img/CafeMap2.png" usemap="#cafeMap">
+					<map name="cafeMap"  id="cafeMap">
+					<div class="change1"><area shape="rect" coords="834,27,881,81" href=#></div>
+					<div class="change2"><area shape="rect" coords="776,27,821,81" href=#></div>
+					<div class="change3"><area shape="rect" coords="717,27,764,81" href=#></div>
+					<div class="change4"><area shape="rect" coords="658,27,705,81" href=#></div>
+					<div class="change5"><area shape="rect" coords="600,27,645,81" href=#></div>
+					<div class="change6"><area shape="rect" coords="541,27,586,81" href=#></div>
+					<div class="change7"><area shape="rect" coords="480,27,529,81" href=#></div>
+					<div class="change8"><area shape="rect" coords="420,27,471,81" href=#></div>
+					<div class="change9"><area shape="rect" coords="360,27,411,81" href=#></div>
+					<div class="change10"><area shape="rect" coords="306,27,353,81" href=#></div>
 				
-				<div class="change11"><area shape="rect" coords="246,27,295,81" href=#></div>
-				<div class="change12"><area shape="rect" coords="172,27,225,78" href=#></div>
-				<div class="change13"><area shape="rect" coords="171,87,226,137" href=#></div>
-				<div class="change14"><area shape="rect" coords="171,147,225,197" href=#></div>
-				<div class="change15"><area shape="rect" coords="172,206,225,257" href=#></div>
-				<div class="change16"><area shape="rect" coords="171,260,225,316" href=#></div>
-				<div class="change17"><area shape="rect" coords="172,320,225,376" href=#></div>
-				<div class="change18"><area shape="rect" coords="19,54,79,126" href=#></div>
-				<div class="change19"><area shape="rect" coords="17,141,78,212" href=#></div>
-				<div class="change20"><area shape="rect" coords="18,226,78,298" href=#></div>
+					<div class="change11"><area shape="rect" coords="246,27,295,81" href=#></div>
+					<div class="change12"><area shape="rect" coords="172,27,225,78" href=#></div>
+					<div class="change13"><area shape="rect" coords="171,87,226,137" href=#></div>
+					<div class="change14"><area shape="rect" coords="171,147,225,197" href=#></div>
+					<div class="change15"><area shape="rect" coords="172,206,225,257" href=#></div>
+					<div class="change16"><area shape="rect" coords="171,260,225,316" href=#></div>
+					<div class="change17"><area shape="rect" coords="172,320,225,376" href=#></div>
+					<div class="change18"><area shape="rect" coords="19,54,79,126" href=#></div>
+					<div class="change19"><area shape="rect" coords="17,141,78,212" href=#></div>
+					<div class="change20"><area shape="rect" coords="18,226,78,298" href=#></div>
 				
-				<div class="change21"><area shape="rect" coords="17,310,78,383" href=#></div>
-				<div class="change22"><area shape="rect" coords="18,397,78,470" href=#></div>	
-				<div class="change23"><area shape="rect" coords="24,530,77,576" href=#></div>
-				<div class="change24"><area shape="rect" coords="95,530,145,576" href=#></div>
-				<div class="change25"><area shape="rect" coords="162,530,213,576" href=#></div>
+					<div class="change21"><area shape="rect" coords="17,310,78,383" href=#></div>
+					<div class="change22"><area shape="rect" coords="18,397,78,470" href=#></div>	
+					<div class="change23"><area shape="rect" coords="24,530,77,576" href=#></div>
+					<div class="change24"><area shape="rect" coords="95,530,145,576" href=#></div>
+					<div class="change25"><area shape="rect" coords="162,530,213,576" href=#></div>
 				
-				<div class="change26"><area shape="rect" coords="591,270,642,325" href=#></div>
-				<div class="change27"><area shape="rect" coords="651,270,700,325" href=#></div>
-				<div class="change28"><area shape="rect" coords="711,270,762,325" href=#></div>
-				<div class="change29"><area shape="rect" coords="771,270,822,325" href=#></div>		
-				<div class="change30"><area shape="rect" coords="591,202,642,257" href=#></div>
-				<div class="change31"><area shape="rect" coords="654,202,702,257" href=#></div>
-				<div class="change32"><area shape="rect" coords="714,202,762,257" href=#></div>
-				<div class="change33"><area shape="rect" coords="774,202,822,257" href=#></div>
+					<div class="change26"><area shape="rect" coords="591,270,642,325" href=#></div>
+					<div class="change27"><area shape="rect" coords="651,270,700,325" href=#></div>
+					<div class="change28"><area shape="rect" coords="711,270,762,325" href=#></div>
+					<div class="change29"><area shape="rect" coords="771,270,822,325" href=#></div>		
+					<div class="change30"><area shape="rect" coords="591,202,642,257" href=#></div>
+					<div class="change31"><area shape="rect" coords="654,202,702,257" href=#></div>
+					<div class="change32"><area shape="rect" coords="714,202,762,257" href=#></div>
+					<div class="change33"><area shape="rect" coords="774,202,822,257" href=#></div>
+				</td>
+			<tr>
+			</table>
 			</td>
 		</tr>
 		<tr>
+		<input type="hidden" name = "tempNo" value="${tempNo}">
 		<td>
 			<input class="button_type01" type="button" value="다음단계로" onclick="seatCheckOk()">
 			<input class="button_type01" type="button" value="뒤로" onclick="window.history.back() ">
