@@ -24,6 +24,5 @@ function replyCheck() {
       return;
    }
    
-
    document.reply_frm.submit();
 } 

@@ -16,7 +16,7 @@
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 		<tr class="headline01">
 			<td width="9%"  class="menu01"><a href="index"><img src="${pageContext.request.contextPath} /resources/img/book3.png" >StudyCafe</a></td>
-			<td width="35%" class="menu01">&nbsp;</td>
+			<td width="37%" class="menu01">&nbsp;</td>
 			<td width="5%" class="menu01">
 			<% 
 				if(sessionId == null) { 
