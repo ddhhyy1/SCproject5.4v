@@ -23,5 +23,8 @@ function replyCheck() {
       alert("댓글 내용을 입력해주세요.");
       return;
    }
+   
+   
+   
    document.reply_frm.submit();
 } 
