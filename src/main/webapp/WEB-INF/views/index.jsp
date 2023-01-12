@@ -13,6 +13,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>스터디 카페</title>
     <link rel="stylesheet" href="/resources/css/slide.css" />
+    
+    
+    <style>
+    span.indexGuide{
+	    font-size: 50px;
+		color: rgb(0, 0, 0);
+		font-family: Arial;
+		font-weight: bold;
+    }
+    </style>
   </head>
 <body>
 <%@ include file="include/header.jsp" %>
@@ -30,7 +40,7 @@
 		<div class="lndTxt wow fadeInUp">
 			<div class="lndTxtPadding1">
 				<div class='my-div'>
-	  				스터디 카페 프로젝트
+	  				STUDY CAFE
 				</div>
 			<table width=100%>
    
@@ -38,7 +48,7 @@
       				<td width=50%>
 						<div style = "float:right;">
 							<ul>
-								<li><img src="/resources/img/c5.PNG"); class="cp"></li>
+								<li><img src="/resources/img/c7.jPG"); class="cp"></li>
 							</ul>
 						</div>
       				</td>
@@ -50,12 +60,53 @@
 						</div>
       				</td>
 				</tr>
-			</table>
-								
+				<tr>
+      				<td width=50%>
+						<div style = "float:right;">
+							<ul>
+								<li><img src="/resources/img/c8.jpg"); class="cp"></li>
+							</ul>
+						</div>
+      				</td>
+      				<td width=50%>
+						<div class="imgBox2">
+							<ul>
+								<li><img src="/resources/img/c9.jpg"); class="cp"></li>
+							</ul>
+						</div>
+      				</td>
+				</tr>
+				<tr>
+					<td>
 				
-				<div class="txtBox tac">
-									
-				</div>
+					</td>
+				</tr>
+			</table>
+			<table align="center">
+				<tr>
+					<td>
+						<br><br><br><br><br><br><br><br><br><br><br>
+					</td>
+				</tr>
+				<tr>
+					<td align="center">
+						<span class="indexGuide">찾아오시는 길</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<br><br><br>
+					</td>
+				</tr>
+				<tr>
+					<tr>
+						<td>
+							<img src="${pageContext.request.contextPath} /resources/img/GMAP3.png" >
+						</td>
+					</tr>
+			</table>					
+				
+				
 			</div>
 		</div>
 	</div>				

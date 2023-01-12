@@ -16,10 +16,9 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/seatjs.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/title.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/content.css">
-
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/ticketView.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    
-<!-- jQuery  -->
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+
 <!-- bootstrap JS -->
 <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>   
 <!-- bootstrap CSS -->
@@ -29,7 +28,7 @@
 
 
 		<!--      달력 추가 js 시작       -->
-    $(document).ready(function () {
+		$(document).ready(function () {
             $.datepicker.setDefaults($.datepicker.regional['ko']); 
             $( "#pickDate" ).datepicker({
             	 showOn: "button",
@@ -81,41 +80,51 @@
 
     
 <meta charset="UTF-8">
-<title>당일권 사용&예약등록</title>
+<title>당일권 예약등록</title>
 
 </head>
 <body>
 <%@ include file="../include/header.jsp" %>
 	<center>
 	<form action="searchSeat" name="searchSeatForm">
-	<table width="65%" border="0" cellspacing="0" cellpadding="20">
+	<table class= "first" width="25%" border="1" cellspacing="0" cellpadding="20" radius="3">
+		<table width="35%" border="1" cellspacing="0" cellpadding="20">
+	<hr>
+		<div class="card border-dark mb-3" style="max-width: 50rem; height:35rem;">
+  			<div class="card-header"><h1>당일권 예약</h1></div>
+  				<div class="card-body text-dark">
+    			<p class="card-text">
+    				<div class="card">
+  						<div class="card-body">	
+    						<span class="upper">
+    						회원아이디	: &nbsp;&nbsp;<%= sessionId %>
+    						</span>
+ 						 </div>
+					</div>
+					<br>
+					<div class="card">
+  						<div class="card-body">	&nbsp;&nbsp;&nbsp;
+    						<span class="upper">날짜지정:&nbsp;&nbsp;
+								<input type="text" id="pickDate" name="selectedDate" style="width:200px;height:30px;font-size:20px;">
+							</span>
+ 						 </div>
+					</div>
+					<br>
+					<div class="card">
+  						<div class="card-body">	
+    						<span class="upper">좌석지정:&nbsp;&nbsp;
+  								<input type="text" name="seatNo" style="width:200px;height:30px;font-size:20px;">
+							</span>
+ 						 </div>
+					</div>
+    				</p>
+ 					</div>
+					</div>
+		
+		<table align=center>
+		<hr>
 		<tr>
-			<td class="titlebox">
-				<h1>당일권_사용등록&예약하기</h1>
-			</td>
-		</tr>
-		<tr>
-			<td class="titlebox">
-				<span class="title02">회원아이디:</span>
-				<span class="title02"><%= sessionId %></span>
-			</td>
-		</tr>
-		<tr>
-			<td class="titlebox">
-				<span class="title02">날짜지정:
-				<input type="text" id="pickDate" name="selectedDate">
-				</span>
-			</td>
-		</tr>
-		<tr>
-			<td class="titlebox">
-				<span class="title02">좌석지정:
-  					<input type="text" name="seatNo">
-				</span>
-			</td>
-		</tr>
-		<tr>
-			<td>
+		<td>
 				<img src="${pageContext.request.contextPath} /resources/img/CafeMap2.png" usemap="#cafeMap">
 				<map name="cafeMap"  id="cafeMap">
 				<div class="change1"><area shape="rect" coords="834,27,881,81" href=#></div>
@@ -156,10 +165,14 @@
 				<div class="change33"><area shape="rect" coords="774,202,822,257" href=#></div>
 			</td>
 		</tr>
+		</table>
+		</tr>
+		</td>
+		<br>
 		<tr>
-		<td>
-			<input class="button_type01" type="button" value="다음단계로" onclick="seatCheckOk()">
-			<input class="button_type01" type="button" value="뒤로" onclick="window.history.back() ">
+			<td>
+				<input class="button_type01" type="button" value="다음 단계로" onclick="seatCheckOk()">&nbsp;&nbsp;
+				<input class="button_type01" type="button" value="뒤로" onclick="window.history.back() ">
 			</td>
 		</tr>
 	</table>

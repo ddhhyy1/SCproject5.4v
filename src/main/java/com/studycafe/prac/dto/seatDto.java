@@ -17,5 +17,5 @@ public class seatDto {
 	private String startTime;
 	private String endTime;	
 	private String salesNo;
-
+	private String reservDate;
 }

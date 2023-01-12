@@ -15,6 +15,15 @@ table.innertable {
   overflow: hidden;
 }
 
+table.innertable2 {
+  border: 1px #a39485 solid;
+  font-size: .9em;
+  box-shadow: 0 2px 5px rgba(0,0,0,.25);
+  width: 70%;
+  border-radius: 25px;
+  overflow: hidden;
+}
+
 th.seatTblTh {
   text-align: left;
   border-bottom: 1px solid #a39485;
@@ -36,6 +45,7 @@ thead.seatTblThead {
   border-bottom: 1px solid #e5e5e5;
     padding: 1em .5em;
   vertical-align: middle;
+  font-size:15px;
 }
 
 td.seatTblTdReserved{
