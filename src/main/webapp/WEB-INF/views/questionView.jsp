@@ -124,12 +124,12 @@
 		 <br><br><br><br>								
         
 		
-		<div>
+		<div class = "x">
 
         	<c:forEach items="${replylist }" var="replyDtoa">
         	<font size ="6" >${replyDtoa.rid } </font>&nbsp; &nbsp; &nbsp;
         			${replyDtoa.rdate } &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;<br><br>
-        <div class ="x" >
+        <div class ="y" >
         	
         		
         		<br><br>
@@ -139,15 +139,15 @@
         	</div>	
       			<br>
         		
-        		<td class = "reply2" width="50" >
+        		
         			<a href="replyModify?rnum=${replyDtoa.rnum }&bnum=${qdto.bnum }"><b><font size ="4">수정</font></b></a>
         			&nbsp;&nbsp;&nbsp;
         			<a href="replyDelete?rnum=${replyDtoa.rnum }&bnum=${qdto.bnum }"><b><font size ="4">삭제</font></b></a> <br><br>
-        		</td>
+        
         		
+					<br><br>				
 									
-									
-        	</tr>
+        	
      
         	<br><br>
         	
