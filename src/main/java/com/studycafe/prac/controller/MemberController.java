@@ -95,7 +95,7 @@ public class MemberController {
 	@RequestMapping(value = "/JoinOk")
 	public String JoinOk(HttpServletRequest request, HttpSession session, Model model) {
 		
-		String uId = request.getParameter("userId");
+		String userId = request.getParameter("userId");
 		String uPw = request.getParameter("userPw");
 		String uName = request.getParameter("userName");
 		String uPhone = request.getParameter("userPhone");
@@ -105,11 +105,19 @@ public class MemberController {
 		
 		MemberDao dao = sqlSession.getMapper(MemberDao.class);
 		
-		dao.joinMember(uId, uPw, uName, uPhone ,uEmail, uPoint,uTicket);
+		int joinFlag =dao.joinMember(userId, uPw, uName, uPhone ,uEmail, uPoint,uTicket);
 		
+		if(joinFlag == 1) {//회원가입 성공시 바로 로그인 진행
+			session.setAttribute("userId", userId);
+			session.setAttribute("uName", uName);
+			
+			model.addAttribute("uName", uName);
+			model.addAttribute("uId", userId);
 			
 			
-			return "redirect:index";
+			
+		}		
+			return"index";
 		} 
 		
 	
@@ -204,10 +212,18 @@ public class MemberController {
 			}
 			
 		} else {
-			
-			dao.memberDelete(userPw);//회원 정보 삭제
-			session.invalidate();
-			
+			 try {
+     			response.setContentType("text/html; charset=UTF-8");      
+     	        PrintWriter out;
+     			out = response.getWriter();
+     			out.println("<script>alert('탈퇴가 완료되었습니다.안녕히가세요!');window.location.href = 'index'</script>");
+     		    out.flush();
+     		   dao.memberDelete(userPw);//회원 정보 삭제
+   			session.invalidate();
+     		} catch (IOException e) {
+     			// TODO Auto-generated catch block
+     			e.printStackTrace();
+     		}
 		}
 		
 		return "redirect:index";
